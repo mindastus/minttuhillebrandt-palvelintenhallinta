@@ -46,6 +46,6 @@ chmod ugo+r /home/tero/publicsite/index.html
 Tarkista oikeudet 'ls -t' ja 'stat'
 
 ## Lähteet
-Karvinen 2026: Apache installed with Ansible - quick notes
-Ansible Community Documentation: Handlers: running operations on change
+Karvinen 2026: Apache installed with Ansible | https://terokarvinen.com/apache-ansible/
+Ansible Community Documentation: Handlers: running operations on change | https://docs.ansible.com/projects/ansible/latest/playbook_guide/playbooks_handlers.html
 Handlers: running operations on change (johdantokappale pääotsikon alta)
