@@ -48,5 +48,4 @@ Tarkista oikeudet 'ls -t' ja 'stat'
 ## Lähteet
 - Karvinen 2026: Apache installed with Ansible | https://terokarvinen.com/apache-ansible/
 - Ansible Community Documentation: Handlers: running operations on change | https://docs.ansible.com/projects/ansible/latest/playbook_guide/playbooks_handlers.html
-- Handlers: running operations on change (johdantokappale pääotsikon alta)
 - Karvinen 2026: Palvelinten Hallinta | https://terokarvinen.com/palvelinten-hallinta/#h3-demoni
