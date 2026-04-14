@@ -65,13 +65,13 @@ yaml
 ```
 sudo apt-get install nginx
 ```
-- Vaihdoit Nginxin oletusjuurihakemiston tavallisen käyttäjän omistukseen, jotta sivua voi muokata ilman sudoa. Lopuksi loin oman index.html‑tiedoston tavallisena käyttäjänä ja se näkyy palvelimen etusivulla osoitteessa http://localhost.
+<img width="944" height="261" alt="Tarkistus, että lähti käyntiin." src="https://github.com/user-attachments/assets/35cab3af-ebea-4587-a015-7d36e4107cc0" />
+
+- Tarkistus, että Nginx lähti käyntiin. Vaihdoit Nginxin oletusjuurihakemiston tavallisen käyttäjän omistukseen, jotta sivua voi muokata ilman sudoa. Lopuksi loin oman index.html‑tiedoston tavallisena käyttäjänä ja se näkyy palvelimen etusivulla osoitteessa http://localhost.
 
 ## c) Automoottorix. Automatisoi Nginx asennus Ansiblella. Ylläpitäjän osuus Ansiblella riittää, itse HTML-weppisivut voi tehdä käsin.
 
-<img width="944" height="261" alt="Tarkistus, että lähti käyntiin." src="https://github.com/user-attachments/assets/35cab3af-ebea-4587-a015-7d36e4107cc0" />
-htt
--
+- Asensin Nginxin automaattisesti Ansible‑roolilla, joka hoitaa paketin asennuksen, käynnistää palvelun ja kopioi oman `index.html`‑sivuni palvelimelle. Rooli myös vaihtaa hakemiston omistajaksi tavallisen käyttäjän, jotta sivua voi muokata ilman sudoa. Playbookin ajon jälkeen Nginx on valmiina ja näyttää oman etusivun automaattisesti.
 
 
 ## Lähteet
