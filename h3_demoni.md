@@ -55,7 +55,7 @@ yaml
 
 ## a) Apassi. Asenna Apache 2 käsin. Weppisivun tulee näkyä palvelimen etusivulla. Sivun tulee olla tavallisen käyttäjän muokattavissa, ilman root- tai sudo-oikeuksia.
 
-<img width="986" height="803" alt="Kuva Apache2 Debian Default pagesta." src="https://github.com/user-attachments/assets/e3783696-cf09-4bd9-b0fd-e3a25c8bad65" />
+<img width="773" height="426" alt="Hei Apache kuva." src="https://github.com/user-attachments/assets/776bd229-9e18-4cc8-8b8a-a77c07e8b5fe" />
 
 - Asensin Apache 2 ‑palvelimen käsin, testasin sen toiminnan ja loin oman etusivun. Muutin hakemiston omistajuuden tavalliselle käyttäjälle, jotta sivua voi muokata ilman sudo‑oikeuksia. Tässä lopputulos että toimii.
 
