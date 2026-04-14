@@ -55,18 +55,27 @@ yaml
 
 ## a) Apassi. Asenna Apache 2 käsin. Weppisivun tulee näkyä palvelimen etusivulla. Sivun tulee olla tavallisen käyttäjän muokattavissa, ilman root- tai sudo-oikeuksia.
 
--
+<img width="986" height="803" alt="Kuva Apache2 Debian Default pagesta." src="https://github.com/user-attachments/assets/e3783696-cf09-4bd9-b0fd-e3a25c8bad65" />
+
+- Asensin Apache 2 ‑palvelimen käsin, testasin sen toiminnan ja loin oman etusivun. Muutin hakemiston omistajuuden tavalliselle käyttäjälle, jotta sivua voi muokata ilman sudo‑oikeuksia. Tässä lopputulos että toimii.
 
 ## b) Moottorix. Asenna Nginx käsin. Weppisivun tulee näkyä palvelimen etusivulla. Sivun tulee olla tavallisen käyttäjän muokattavissa, ilman root- tai sudo-oikeuksia. (Muista sammuttaa Apache ensin.)
 
--
+- Sammutin ensin Apachen, jotta portti 80 vapautui Nginxille. sudo systemctl stop apache2. Asensin Nginxin käsin:
+```
+sudo apt-get install nginx
+```
+- Vaihdoit Nginxin oletusjuurihakemiston tavallisen käyttäjän omistukseen, jotta sivua voi muokata ilman sudoa. Lopuksi loin oman index.html‑tiedoston tavallisena käyttäjänä ja se näkyy palvelimen etusivulla osoitteessa http://localhost.
 
 ## c) Automoottorix. Automatisoi Nginx asennus Ansiblella. Ylläpitäjän osuus Ansiblella riittää, itse HTML-weppisivut voi tehdä käsin.
 
+<img width="944" height="261" alt="Tarkistus, että lähti käyntiin." src="https://github.com/user-attachments/assets/35cab3af-ebea-4587-a015-7d36e4107cc0" />
+htt
 -
 
 
 ## Lähteet
 - Karvinen 2026: Apache installed with Ansible | https://terokarvinen.com/apache-ansible/
+- Karvinen 2008: Install Apache Web Server on Ubuntu | https://terokarvinen.com/2008/05/02/install-apache-web-server-on-ubuntu-4/index.html
 - Ansible Community Documentation: Handlers: running operations on change | https://docs.ansible.com/projects/ansible/latest/playbook_guide/playbooks_handlers.html
 - Karvinen 2026: Palvelinten Hallinta | https://terokarvinen.com/palvelinten-hallinta/#h3-demoni
