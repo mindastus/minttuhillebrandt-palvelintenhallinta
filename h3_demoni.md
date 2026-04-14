@@ -57,22 +57,19 @@ yaml
 
 <img width="773" height="426" alt="Hei Apache kuva." src="https://github.com/user-attachments/assets/776bd229-9e18-4cc8-8b8a-a77c07e8b5fe" />
 
-- Asensin Apache 2 ‑palvelimen käsin, testasin sen toiminnan ja loin oman etusivun. Muutin hakemiston omistajuuden tavalliselle käyttäjälle, jotta sivua voi muokata ilman sudo‑oikeuksia. Tässä lopputulos että toimii.
+- Asensin Apache2‑palvelimen ja laitoin sen näyttämään oman index.html‑sivuni palvelimen etusivulla. Vaihdoin /var/www/html‑hakemiston omistajaksi tavallisen käyttäjän, jotta sivua voi muokata ilman sudo‑oikeuksia.
 
 ## b) Moottorix. Asenna Nginx käsin. Weppisivun tulee näkyä palvelimen etusivulla. Sivun tulee olla tavallisen käyttäjän muokattavissa, ilman root- tai sudo-oikeuksia. (Muista sammuttaa Apache ensin.)
 
-- Sammutin ensin Apachen, jotta portti 80 vapautui Nginxille. sudo systemctl stop apache2. Asensin Nginxin käsin:
-```
-sudo apt-get install nginx
-```
-<img width="944" height="261" alt="Tarkistus, että lähti käyntiin." src="https://github.com/user-attachments/assets/35cab3af-ebea-4587-a015-7d36e4107cc0" />
-
-- Tarkistus, että Nginx lähti käyntiin. Vaihdoit Nginxin oletusjuurihakemiston tavallisen käyttäjän omistukseen, jotta sivua voi muokata ilman sudoa. Lopuksi loin oman index.html‑tiedoston tavallisena käyttäjänä ja se näkyy palvelimen etusivulla osoitteessa http://localhost.
+- Sammutin Apachen ja asensin Nginxin, jotta portti 80 vapautui uudelle palvelimelle. Tein oman etusivun ja annoin tavalliselle käyttäjälle oikeudet muokata /var/www/html‑hakemistoa ilman sudoa.
+  
+<img width="850" height="412" alt="Hei Nginx kuva." src="https://github.com/user-attachments/assets/12ca7bc9-e5f0-4170-bdad-b0fd1c1c27f8" />
 
 ## c) Automoottorix. Automatisoi Nginx asennus Ansiblella. Ylläpitäjän osuus Ansiblella riittää, itse HTML-weppisivut voi tehdä käsin.
 
-- Asensin Nginxin automaattisesti Ansible‑roolilla, joka hoitaa paketin asennuksen, käynnistää palvelun ja kopioi oman `index.html`‑sivuni palvelimelle. Rooli myös vaihtaa hakemiston omistajaksi tavallisen käyttäjän, jotta sivua voi muokata ilman sudoa. Playbookin ajon jälkeen Nginx on valmiina ja näyttää oman etusivun automaattisesti.
+<img width="567" height="538" alt="image" src="https://github.com/user-attachments/assets/02095914-871e-4952-a423-18da0656ebc0" />
 
+- Automatisoin Nginxin asennuksen Ansible‑roolilla, joka asentaa palvelun, kopioi oman HTML‑sivun ja varmistaa, että käyttäjä voi muokata sitä ilman sudoa. Playbook käynnistää Nginxin automaattisesti ja tekee koko asennuksesta toistettavan.
 
 ## Lähteet
 - Karvinen 2026: Apache installed with Ansible | https://terokarvinen.com/apache-ansible/
