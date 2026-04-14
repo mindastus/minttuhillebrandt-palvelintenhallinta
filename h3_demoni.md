@@ -1,16 +1,57 @@
 ## h3 Demoni
 
-## x) Lue ja tiivistä. (Tässä x-alakohdassa ei tarvitse tehdä testejä tietokoneella, vain lukeminen tai kuunteleminen ja tiivistelmä riittää. Tiivistämiseen riittää muutama ranskalainen viiva. Ei siis vaadita pitkää eikä essee-muotoista tiivistelmää. Lisää kuhunkin jokin oma kysymys tai huomio.)
+## x)  Apache installed with Ansible
+- Muutokset konfiguraatiotiedostoihin tulevat voimaan vasta, kun palvelu käynnistetään uudelleen.
+- `roles/apache2/` sisältää kaiken rooliin liittyvän.
+- `tasks/main.yml` luo symbolisen linkin sites-enabled-hakemistoon.
+- Huomio: `notify` varmistaa, että restart tapahtuu vain tarvittaessa.
+  
+## x)  Ansible Community Documentation
+- Handler on tehtävä, joka ajetaan vain jos jokin muuttuu.
+- Jos loopissa yksikin item aiheuttaa muutoksen → kaikki handlerit ajetaan.
+- Roolien handlerit menevät globaalisti samaan listaan.
+- Huomio: Handler säästää turhilta restarteilta ja tekee playbookista siistin.
+  
+## x) ansible-doc service
+- service‑moduuli hallitsee palveluiden tilaa eri Linux‑järjestelmissä.
+- Sillä voi käynnistää, pysäyttää, restartata ja ottaa palvelun käyttöön tai pois käytöstä.
+- Moduuli käyttää järjestelmän omaa init‑järjestelmää.
 
-Karvinen 2026: Apache installed with Ansible - quick notes
-Ansible Community Documentation: Handlers: running operations on change
-Handlers: running operations on change (johdantokappale pääotsikon alta)
-Notifying handlers
-'ansible-doc service':
-johdantokappale (MODULE alta)
-enabled
-name
-state
+*enabled*
+- Määrittää, käynnistyykö palvelu automaattisesti bootissa.
+- Arvot:
+```
+yes → palvelu käynnistyy automaattisesti
+no → ei käynnisty automaattisesti
+```
+*name*
+- Palvelun nimi, jota hallitaan.
+- Esim. name: apache2 
+
+*state*
+- Määrittää palvelun halutun tilan:
+```
+started → palvelu käynnissä
+stopped → palvelu pysäytetty
+restarted → palvelu käynnistetään uudelleen
+reloaded → konfiguraatio ladataan uudelleen ilman täyttä restarttia
+```
+
+*EXAMPLES*
+```
+yaml
+- name: Ensure apache is running
+    name: apache2
+    state: started
+
+- name: Restart apache
+    name: apache2
+    state: restarted
+
+- name: Enable apache on boot
+    name: apache2
+    enabled: yes
+```
 
 ## a) Apassi. Asenna Apache 2 käsin. Weppisivun tulee näkyä palvelimen etusivulla. Sivun tulee olla tavallisen käyttäjän muokattavissa, ilman root- tai sudo-oikeuksia.
 
@@ -24,26 +65,6 @@ state
 
 -
 
-Vinkit
-
-Ensin käsin, sitten automaattisesti
-Pienen testattava kokonaisuus kerrallaan
-Lue lokeja. Weppipalvelimen virheilmoitukset ovat lokeissa, käyttäjälle näkyvä weppisivu ei kerro juuri mitään.
-Kaksi demonia ei voi kuunnella samaa porttia. Sulje siis nginx ennen apachen asennusta ja päinvastoin.
-'ansible-doc apt': name, state, update_cache. EXAMPLES.
-'ansible-doc copy': dest, src; owner, group, mode. EXAMPLES.
-'ansible-doc file': src, dest, state. owner, group. EXAMPLES.
-nginx asennus on samantapainen kuin Apachen
-sites-available/default - tiedoston lopussa on esimerkki yksinkertaisesta konfiguraatiosta
-'sudo nginx -t' on samantapainen kuin 'sudo apache2ctl configtest'
-Kotisivut käyttäjänä
-Weppipalvelin pyörinee käyttäjänä www-data, ryhmä www-data. Jos tiedoston omistaa tero:tero, niin www-data on others eli viimeiset kolme kirjainta.
-Jotta se näkee sivut, kansioihin pitää olla x-oikeus ja tiedostoihin r.
-/home/tero/publicsite/index.html
-chmod ugo+x /home/tero/
-chmod ugo+x /home/tero/publicsite/
-chmod ugo+r /home/tero/publicsite/index.html
-Tarkista oikeudet 'ls -t' ja 'stat'
 
 ## Lähteet
 - Karvinen 2026: Apache installed with Ansible | https://terokarvinen.com/apache-ansible/
